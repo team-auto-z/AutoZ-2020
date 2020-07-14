@@ -1,0 +1,38 @@
+digraph G {
+node [shape=box];
+"chassis" [label="chassis"];
+"front_ball" [label="front_ball"];
+"camera_cam" [label="camera_cam"];
+"camera_stand" [label="camera_stand"];
+"gps_sensor" [label="gps_sensor"];
+"imu_sensor" [label="imu_sensor"];
+"kinect" [label="kinect"];
+"l_encoder" [label="l_encoder"];
+"left_wheel" [label="left_wheel"];
+"lidar" [label="lidar"];
+"r_encoder" [label="r_encoder"];
+"right_wheel" [label="right_wheel"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"chassis" -> "base_footprint_to_front_ball" [label="xyz: 0 0.25 -0.2 \nrpy: 0 -0 0"]
+"base_footprint_to_front_ball" -> "front_ball"
+"chassis" -> "camera_joint" [label="xyz: 0 -0.357 1.486 \nrpy: 0 -0 0"]
+"camera_joint" -> "camera_cam"
+"chassis" -> "camera_stand_hinge" [label="xyz: 0 -0.396 0.55 \nrpy: 0 -0 0"]
+"camera_stand_hinge" -> "camera_stand"
+"chassis" -> "gps_joint" [label="xyz: 0 0.092 0.144 \nrpy: 0 -0 0"]
+"gps_joint" -> "gps_sensor"
+"chassis" -> "imu_joint" [label="xyz: -0.093 -0.206 -0.132 \nrpy: 0 -0 0"]
+"imu_joint" -> "imu_sensor"
+"chassis" -> "kinect" [label="xyz: 0 -0.42 0.581 \nrpy: 0 -0 0"]
+"kinect" -> "kinect"
+"chassis" -> "l_encoder" [label="xyz: -0.301 -0.109 -0.133 \nrpy: 0 -0 0"]
+"l_encoder" -> "l_encoder"
+"chassis" -> "left_wheel_hinge" [label="xyz: -0.29 -0.17 -0.155 \nrpy: 0 1.5708 -0"]
+"left_wheel_hinge" -> "left_wheel"
+"chassis" -> "lidar" [label="xyz: 0 -0.389 0.296 \nrpy: 0 -0 0"]
+"lidar" -> "lidar"
+"chassis" -> "r_encoder" [label="xyz: 0.301 -0.109 -0.133 \nrpy: 0 -0 0"]
+"r_encoder" -> "r_encoder"
+"chassis" -> "right_wheel_hinge" [label="xyz: 0.29 -0.17 -0.155 \nrpy: 0 1.5708 -0"]
+"right_wheel_hinge" -> "right_wheel"
+}

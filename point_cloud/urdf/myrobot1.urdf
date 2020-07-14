@@ -1,0 +1,350 @@
+<?xml version='1.0'?>
+<robot name="my_robot">
+
+  <link name="chassis">
+  <inertial>
+    <origin xyz="0 0 .285" rpy="0 0 0"/>       
+    <inertia  ixx="13.7365" ixy="5.0948"  ixz="3.87399"  iyy="9.35242"  iyz="6.0809"  izz="12.09045"/>
+    <mass value="14.130"/>
+  </inertial>  
+
+   <collision name='collision'>
+          	<origin xyz="0 0 .285" rpy="0 0 0"/>
+	          <geometry>
+              <box size=".54 .76 .29">
+                
+              </box>
+            </geometry>
+            
+           </collision>
+
+           <visual name='visual'>
+            <geometry>
+              <box size=".54 .76 .29">
+                
+              </box>
+            </geometry>
+             
+          </visual>           
+      </link>
+
+
+ <link name="left_wheel">
+  <inertial>
+    <origin xyz="-.29 -.17 -.155" rpy="0 1.5707 0"/>
+    <mass value="2.238"/>
+    <inertia  ixx="2.3018" ixy="2.303"  ixz="2.569"  iyy="1.326"  iyz="1.1105"  izz="1.083" />
+  </inertial> 
+  
+  <collision name="collision">
+   <geometry>
+    <cylinder length=".05" radius="0.20">
+              
+    </cylinder>
+   </geometry>
+  </collision>
+  <visual name="visual">
+   <geometry>
+    <cylinder length=".05" radius="0.20">
+    </cylinder>
+   </geometry>
+  </visual>
+ </link>
+
+ <link name="right_wheel">
+       <inertial>        
+	  <origin xyz="0.29 -.17 -.155" rpy="0 1.5707 0"/>
+          
+         <inertia  ixx="2.3018" ixy="1.198"  ixz="1.336"  iyy="2.714"  iyz="1.1105"  izz="2.471" />
+
+          <mass value="2.238"/>
+       </inertial>
+        <collision name="collision">
+          <geometry>
+            <cylinder length=".05" radius="0.20">
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          
+           <geometry>
+             <cylinder length=".05" radius="0.20">
+            </cylinder>
+          </geometry>
+        </visual>
+      </link>
+   
+
+<link name="front_ball"> 
+   <inertial>
+      <origin xyz="0.5 0.25 -.19" rpy="0 0 0"/>  
+    <inertia  ixx=".7879" ixy=".4935"  ixz=".25869"  iyy=".5679"  iyz=".3233"  izz="1.01379"/>        <mass value="1.748"/>   
+     </inertial>
+      <visual>
+      <geometry>
+        <sphere radius="0.11"/>
+      </geometry>
+     </visual>
+     <collision>
+       <geometry>
+        <sphere radius="0.11"/>
+      </geometry>
+    </collision>
+</link>
+
+<link name="camera_stand">
+  <inertial>
+    <origin xyz="0 -.396 .550" rpy="0 0 0"/>
+    <inertia ixx="2.291" ixy=".4847" ixz="0.3279" iyy=".8303" iyz="9.90" izz="1.781"/>
+    <mass value=".701"/>
+  </inertial>
+  <visual>
+      <geometry>
+        <box size="0.05 0.03 0.9"/>
+      </geometry>
+     </visual>
+     <collision>
+       <geometry>
+        <box size="0.05 0.03 0.9"/>
+      </geometry>
+    </collision>
+</link>
+ <link name="camera_cam">
+  <inertial>
+    <origin xyz="0 -0.396 0.357" rpy="0 0 0"/>
+    <inertia ixx=".174" ixy=".031" ixz=".014" iyy=".036" iyz=".065" izz=".152"/>
+    <mass value="0.028"/>
+  </inertial>
+  <visual>
+      <geometry>
+        <box size="0.054 0.076 0.029"/>
+      </geometry>
+     </visual>
+     <collision>
+       <geometry>
+        <box size="0.054 0.076 0.029"/>
+      </geometry>
+    </collision>
+</link>
+<link name="gps_sensor">
+  <inertial>
+    <origin xyz="0 0.092 0.144" rpy="0 0 0"/>
+    <inertia ixx=".032" ixy=".013" ixz=".007" iyy=".015" iyz=".014" izz=".030"/>
+    <mass value="0.028"/>
+  </inertial>
+  <visual>
+      <geometry>
+        <box size="0.054 0.076 0.029"/>
+      </geometry>
+     </visual>
+     <collision>
+       <geometry>
+        <box size="0.054 0.076 0.029"/>
+      </geometry>
+    </collision>
+</link>
+
+<link name="imu_sensor">
+  <inertial>
+    <origin xyz="-.093 -.206 -.132" rpy="0 0 0"/>
+    <inertia ixx=".001" ixy=".000" ixz=".0000" iyy=".001" iyz=".000" izz=".000"/>
+    <mass value="0.028"/>
+  </inertial>
+  <visual>
+      <geometry>
+        <box size="0.054 0.076 0.029"/>
+      </geometry>
+     </visual>
+     <collision>
+       <geometry>
+        <box size="0.054 0.076 0.029"/>
+      </geometry>
+    </collision>
+</link>
+  
+<link name="l_encoder">
+  <inertial>
+    <origin xyz="-.301 -.109 -.133" rpy="0 0 0"/>
+    <inertia ixx=".001" ixy=".001" ixz=".0001" iyy=".001" iyz=".001" izz=".001"/>
+    <mass value="0.028"/>
+  </inertial>
+  <visual>
+      <geometry>
+        <box size="0.054 0.076 0.029"/>
+      </geometry>
+     </visual>
+     <collision>
+       <geometry>
+        <box size="0.054 0.076 0.029"/>
+      </geometry>
+    </collision>
+</link>
+
+<link name="r_encoder">
+  <inertial>
+    <origin xyz=".301 -.109 -.133" rpy="0 0 0"/>
+    <inertia ixx=".001" ixy=".001" ixz=".0001" iyy=".001" iyz=".001" izz=".001"/>
+    <mass value="0.028"/>
+  </inertial>
+  <visual>
+      <geometry>
+        <box size="0.054 0.076 0.029"/>
+      </geometry>
+     </visual>
+     <collision>
+       <geometry>
+        <box size="0.054 0.076 0.029"/>
+      </geometry>
+    </collision>
+</link>
+
+<joint name="r_encoder" type="fixed">
+      <limit effort="4" lower="0" upper="6.28" velocity="0"/>
+      <origin xyz=".301 -.109 -.133" rpy="0 0 0"/>
+      <parent link="chassis"/>
+      <child link="r_encoder"/>
+      <axis xyz="0 0 0"/>
+</joint>
+
+<link name="kinect">
+  <inertial>
+    <origin xyz="0.000 -.420 .581" rpy="0 0 0"/>
+    <inertia ixx="1.640" ixy=".368" ixz=".274" iyy=".716" iyz=".785" izz="1.186"/>
+    <mass value="0.028"/>
+  </inertial>
+  <visual>
+      <geometry>
+        <box size="0.054 0.076 0.029"/>
+      </geometry>
+     </visual>
+     <collision>
+       <geometry>
+        <box size="0.054 0.076 0.029"/>
+      </geometry>
+    </collision>
+</link>
+
+<link name="lidar">
+  <inertial>
+    <origin xyz="0.000 -.389 .296" rpy="0 0 0"/>
+    <inertia ixx="0.389" ixy=".089" ixz=".090" iyy=".238" iyz=".194" izz="0.233"/>
+    <mass value="0.028"/>
+  </inertial>
+  <visual>
+      <geometry>
+        <box size="0.054 0.076 0.029"/>
+      </geometry>
+     </visual>
+     <collision>
+       <geometry>
+        <box size="0.054 0.076 0.029"/>
+      </geometry>
+    </collision>
+</link>
+
+<joint name="kinect" type="fixed">
+      <limit effort="4" lower="0" upper="6.28" velocity="0"/>
+      <origin xyz="0.000 -.420 .581" rpy="0 0 0"/>
+      <parent link="chassis"/>
+      <child link="kinect"/>
+      <axis xyz="0 0 0"/>
+</joint>
+
+<joint name="lidar" type="fixed">
+      <limit effort="4" lower="0" upper="6.28" velocity="0"/>
+      <origin xyz="0.000 -.389 .296" rpy="0 0 0"/>
+      <parent link="chassis"/>
+      <child link="lidar"/>
+      <axis xyz="0 0 0"/>
+</joint>
+
+<joint name="l_encoder" type="fixed">
+      <limit effort="4" lower="0" upper="6.28" velocity="0"/>
+      <origin xyz="-.301 -.109 -.133" rpy="0 0 0"/>
+      <parent link="chassis"/>
+      <child link="l_encoder"/>
+      <axis xyz="0 0 0"/>
+</joint>
+
+
+<joint name="imu_joint" type="fixed">
+      <limit effort="4" lower="0" upper="6.28" velocity="0"/>
+      <origin xyz="-.093 -.206 -.132" rpy="0 0 0"/>
+      <parent link="chassis"/>
+      <child link="imu_sensor"/>
+      <axis xyz="0 0 0"/>
+</joint>
+
+<joint name="camera_joint" type="fixed">
+      <limit effort="4" lower="0" upper="6.28" velocity="0"/>
+      <origin xyz="0 -.357 1.486" rpy="0 0 0"/>
+      <parent link="chassis"/>
+      <child link="camera_cam"/>
+      <axis xyz="0 0 0"/>
+</joint>
+
+<joint name="gps_joint" type="fixed">
+      <limit effort="4" lower="0" upper="6.28" velocity="0"/>
+      <origin xyz="0 .092 .144" rpy="0 0 0"/>
+      <parent link="chassis"/>
+      <child link="gps_sensor"/>
+      <axis xyz="0 0 0"/>
+</joint>
+<joint type="fixed" name="camera_stand_hinge">
+        <limit effort="4" lower="0" upper="6.28" velocity="10"/>
+        <origin xyz="0 -.396 .550" rpy="0 0 0"/>
+        <parent link="chassis"/>
+        <child link="camera_stand"/>
+        <axis xyz="0 0 0"/>
+</joint>
+
+
+  
+<joint type="revolute" name="right_wheel_hinge">
+
+	<limit effort="4" lower="0" upper="6.28" velocity="10"/>
+        <origin xyz="0.29 -.17 -.155" rpy="0 1.5707 0"/>
+        <parent link="chassis"/>
+        <child link="right_wheel"/>
+        <axis xyz="0 0 0"/>
+</joint>
+
+<joint type="revolute" name="left_wheel_hinge">
+
+	<limit effort="4" lower="0" upper="6.28" velocity="10"/>
+        <origin xyz="-.29 -.17 -.155" rpy="0 1.5707 0"/>
+        <parent link="chassis"/>
+        <child link="left_wheel"/>
+        <axis xyz="0 0 0"/>
+</joint>
+
+
+
+ <joint name="base_footprint_to_front_ball" type="floating">
+    <parent link="chassis"/>
+    <child link="front_ball"/>
+    <origin xyz="0 0.25 -.20" rpy="0 0 0" />
+</joint>
+
+<gazebo>
+    <joint name='base_footprint_to_front_ball' type='ball'>
+    <parent>chassis</parent>
+    <child>front_ball</child>
+    <origin xyz="0 0.25 -.19" rpy="0 0 0" />
+     <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+          <suspension>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </suspension>
+        </ode>
+      </physics>
+    </joint>
+</gazebo>
+
+ 
+</robot>

@@ -1,0 +1,61 @@
+#!/usr/bin/env python
+
+import rospy
+from sensor_msgs.msg import Image
+import cv2
+from image_sensor_publisher import ImageConverter
+
+image_converter = ImageConverter()
+
+image_list = []
+RECORD = True
+PATH_VIDEO = '~/catkin_ws/src/differential_drive/dataset/'
+HEIGHT,WIDTH = 640,480 
+# FPS = 25 #comment out the other FPS statement if you want to override it
+
+def callback_image(data):
+	
+	frame = image_converter.convert_msg_to_image(data)
+	if RECORD:
+		image_list.append(frame)
+	cv2.imshow('frame',frame)
+	cv2.waitKey(24)
+	rospy.loginfo(rospy.get_caller_id() + "Recieved Image MSG")
+	
+def callback_motor_cmd(data):
+	pass
+
+
+def listener():
+
+    rospy.init_node('DataCollector', anonymous=True)
+    rate = rospy.Rate(rospy.get_param("~rate", 50))
+    rospy.Subscriber("/front_view", Image, callback)
+    
+    FPS = cap.get(cv2.CAP_PROP_FPS)
+
+    out = cv2.VideoWriter(PATH_VIDEO,cv2.VideoWriter_fourcc(*'DIVX'),FPS,(HEIGHT,WIDTH))
+
+
+    # spin() simply keeps python from exiting until this node is stopped
+    while not rospy.is_shutdown():
+	
+		
+		
+    	try:
+    		rate.sleep()
+
+    		
+    	except KeyboardInterrupt:
+    		print("Saving Video .......")
+    		cv2.destroyAllWindows()
+			break
+    
+
+    for i in image_list:
+    	out.write(i)
+    out.release()
+	cap.release()
+if __name__ == '__main__':
+    listener()
+

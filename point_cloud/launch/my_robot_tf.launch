@@ -1,0 +1,9 @@
+<launch>
+  <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    
+    <!-- more default parameters can be changed here -->
+  </include>
+  <param name="robot_description" command="$(find xacro)/xacro.py $(find point_cloud)/urdf/myrobot1.urdf" />
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model myrobot" />
+</launch>

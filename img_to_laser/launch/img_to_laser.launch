@@ -1,0 +1,23 @@
+<launch>
+
+	<!--Set your virtual lidar position here-->
+	<param name="virtual_lidar_x" value="400"/>
+	<param name="virtual_lidar_y" value="400"/>
+
+	<node pkg="img_to_laser" type="img_to_laser_node" name="image_to_laser_scan" clear_params="true">
+	
+	<!-- Change the topics here -->
+    	<remap from="final_image" to="final_image"/>
+    	<remap from="img_scan"  to="img_scan"/>
+
+  	</node>
+	  <node pkg="image_publisher" type="image_publisher" name="image_publisher"
+        args="$(find img_to_laser)/src/2.jpeg" >
+    <param name="flip_horizontal" value="false" />
+    <param name="flip_vertical" value="false" />
+    <param name="frame_id" value="my_camera" />
+    <param name="publish_rate" value="1" />
+    <param name="camera_info_url" value="file:///$(env HOME)/.ros/camera_info/camera.yaml" />   <!-- relative to ~/.ros/ -->
+	<remap from="image_publisher/image_raw" to="final_image"/>
+  </node>
+</launch>

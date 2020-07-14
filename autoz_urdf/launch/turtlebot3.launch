@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+  <launch>
+
+     <param name="robot_description" command="cat '$(find autoz_urdf)/urdf/turltebot3_burger.urdf.xacro'" />
+
+     <node name="autoz_urdf" pkg="gazebo_ros" type="spawn_model" output="screen" args="-param /robot_description -urdf -model autoz" />
+  </launch>

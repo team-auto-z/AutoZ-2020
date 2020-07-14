@@ -1,0 +1,21 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/home/sahil/catkin_ws/devel/include",
+        "/opt/ros/kinetic/include",
+        "/home/sahil/catkin_ws/src/openni_camera/openni_camera/include",
+        "/home/sahil/catkin_ws/src/point_cloud/include",
+        "/home/sahil/catkin_ws/src/r2d2/include",
+        "/home/sahil/catkin_ws/src/ros_essentials_cpp/include",
+        "/home/sahil/catkin_ws/src/usb_cam/include",
+        "/usr/include"
+      ],
+      "name": "Linux"
+    }
+  ]
+}

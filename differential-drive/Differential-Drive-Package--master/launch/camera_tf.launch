@@ -1,0 +1,4 @@
+<launch>
+<node pkg="tf" type="static_transform_publisher" name="cam_frame_tf" args="1 0 0 0 0 0 1 base_link optical_cam_center 100" />
+</launch>
+

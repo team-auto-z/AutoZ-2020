@@ -1,0 +1,63 @@
+<launch>
+  <!-- change this next line to include the launch file for your robot's hardware drivers: -->
+  <!-- <include file="$(find knex_ros)/launch/knex_arduino_ser.launch" /> -->
+
+  <rosparam param="ticks_meter">70</rosparam>
+
+  <!-- <include file="$(find autoz)/launch/dual_ekf_navsat.launch"/> -->
+  <!-- <include file="$(find rplidar_ros)/launch/rplidar.launch" /> -->
+
+  <param name="robot_description" command="cat $(find r2d2)/urdf/myrobot1.urdf" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+  <node name="state_publisher" pkg="r2d2" type="state_publisher" />
+
+
+  <node pkg="differential_drive" type="pid_velocity.py" name="lpid_velocity">
+      <remap from="wheel" to="lwheel"/>
+      <remap from="motor_cmd" to="lmotor_cmd"/>
+      <remap from="wheel_vtarget" to="lwheel_vtarget"/>
+      <remap from="wheel_vel" to="lwheel_vel"/>
+      <rosparam param="Kp">200</rosparam>
+      <rosparam param="Ki">200</rosparam>
+      <rosparam param="Kd">0</rosparam>
+      <rosparam param="out_min">-15</rosparam>
+      <rosparam param="out_max">15</rosparam>
+      <rosparam param="rate">30</rosparam>
+      <rosparam param="timeout_ticks">4</rosparam>
+      <rosparam param="rolling_pts">5</rosparam>
+  </node>
+  <node pkg="differential_drive" type="pid_velocity.py" name="rpid_velocity">
+      <remap from="wheel" to="rwheel"/>
+      <remap from="motor_cmd" to="rmotor_cmd"/>
+      <remap from="wheel_vtarget" to="rwheel_vtarget"/>
+      <remap from="wheel_vel" to="rwheel_vel"/>
+      <rosparam param="Kp">200</rosparam>
+      <rosparam param="Ki">200</rosparam>
+      <rosparam param="Kd">0</rosparam>
+      <rosparam param="out_min">-15</rosparam>
+      <rosparam param="out_max">15</rosparam>
+      <rosparam param="rate">30</rosparam>
+      <rosparam param="timeout_ticks">4</rosparam>
+      <rosparam param="rolling_pts">5</rosparam>
+  </node>
+
+  <!-- <node pkg="differential_drive" type="virtual_joystick.py" name="virtual_joystick" output="screen"/> -->
+  <!-- <node pkg="differential_drive" type="image_sensor_publisher.py" name="image_node" output="screen"/> -->
+  <node pkg="differential_drive" type="diff_tf.py" name="transform_publisher">
+    
+  </node>
+  <node pkg="differential_drive" type="twist_to_motors.py" name="twist_to_motors" output="screen">
+    <rosparam param="base_width">0.245</rosparam>
+  </node>
+  
+  <node pkg="rosserial_python" type="serial_node.py" name="ImuEncoder">
+    <param name="port" value="/dev/ttyACM0"/>
+    <!-- <param name="baud" value="115200"/> -->
+  </node>
+  <node pkg="rosserial_python" type="serial_node.py" name="GPSSerial">
+    <param name="port" value="/dev/ttyACM1"/>
+    <!-- <param name="baud" value="115200"/> -->
+  </node>
+  <node pkg="differential_drive" type="sensor_serial_imu.py" name="allsensorPublisher" output="screen"/>
+</launch>
+

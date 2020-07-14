@@ -1,0 +1,7 @@
+  <launch>
+    <param name="robot_description" textfile="$(find differential-drive)/Differential-Drive-Package--master/urdf/my_robot1.urdf" />
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="rob_st_pub" >
+      <remap from="robot_description" to="different_robot_description" />
+      <remap from="joint_states" to="different_joint_states" />
+    </node>
+  </launch>

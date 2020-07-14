@@ -1,0 +1,18 @@
+
+<launch>
+
+  <arg name="odom_topic" default="odom" /> 
+
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find differential-drive)/Differential-Drive-Package--master/param/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find differential-drive)/Differential-Drive-Package--master/param/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find differential-drive)/Differential-Drive-Package--master/param/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find differential-drive)/Differential-Drive-Package--master/param/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find differential-drive)/Differential-Drive-Package--master/param/base_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find differential-drive)/Differential-Drive-Package--master/param/dwa_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find differential-drive)/Differential-Drive-Package--master/param/move_base_params.yaml" command="load" />
+
+    <remap from="cmd_vel" to="/mobile_base/commands/velocity"/>
+    <remap from="odom" to="$(arg odom_topic)"/>
+  </node>
+</launch>
