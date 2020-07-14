@@ -1,5 +1,5 @@
 # AutoZ-2020
-*CmakeList.txt is added to gitignore. So Clone it directly.
+* CmakeList.txt is added to gitignore. So Clone it directly.
 
 ## Files
 ### autoz_nav
