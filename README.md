@@ -14,4 +14,5 @@
 ### Notes
 * All the Chefbot files not original chefbot files, they are used to test our bot and modified for test purposes
 * All TurtleBot Files are Original TurtleBot Files
-* Global Localization Package("robot_localization") has been removed for error purpose and tweaking parameters for now
+* Global Localization Package("robot_localization") has been removed for error purpose and tweaking parameters for now.
+* And while running the main launch file ("myrobotdrive.launch") it may show some error like "No such Directory". Which every place it shows, change that directory name from other name to your local machine name.
