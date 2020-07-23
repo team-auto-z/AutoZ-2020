@@ -1,5 +1,4 @@
 # AutoZ-2020
-* CmakeList.txt is added to gitignore. So Clone it directly.
 * Then do a Catkin_make
 
 ## Files
